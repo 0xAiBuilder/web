@@ -1,24 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Route, Navigate, Routes} from 'react-router-dom';
+import Activity from './pages/Activity/Activity';
+import Aggregator from './pages/Aggregator/Aggregator';
+import Home from './pages/Home/Home';
+import Package from './pages/Package/Package';
+import Skill from './pages/Skill/Skill';
+import Openskill from './pages/Openskill/Openskill';
+import Navbar from './Components/Navbar/Navbar';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Navbar/>
+      <main>
+        
+        <Routes>
+          
+          <Route path = "/home"      element={<Home/>}  />
+          <Route path = "/openskill" element={<Openskill/>} />
+          <Route path = "/activity"  element={<Activity/>}      />
+          <Route path = "/aggregator"element={<Aggregator/>}/>
+          <Route path = "/skill"     element={<Skill/>}     />
+          <Route path = "/package"   element={<Package/>}   />
+          <Route path="*" element={<Navigate to ="/home" />}/>
+          <Route path="/" element={<Navigate to ="/home" />}/>
+        </Routes>
+        
+      </main>
+    </Router>
   );
 }
 
